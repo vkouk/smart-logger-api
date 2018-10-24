@@ -10,6 +10,14 @@
   },
   "author": "Vasilis Koukoutis",
   "license": "MIT",
+  "engines": {
+    "node": "10.11.0",
+    "npm": "6.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vkouk/smart-logger-api.git"
+  },
   "dependencies": {
     "dotenv": "^6.1.0",
     "graphql": "^14.0.2",
