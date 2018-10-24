@@ -1,0 +1,37 @@
+{
+  "name": "smart-logger-api",
+  "version": "1.0.0",
+  "description": "Activity Logger For Companies",
+  "main": "server.js",
+  "scripts": {
+    "start": "babel src -d dist && cp ./src/schema.graphql  ./dist && node dist/server.js",
+    "dev": "nodemon src/server.js --ext js,graphql --exec babel-node",
+    "deploy": "prisma deploy --env-file src/config/dev.env"
+  },
+  "author": "Vasilis Koukoutis",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^6.1.0",
+    "graphql": "^14.0.2",
+    "graphql-cli": "^2.16.7",
+    "graphql-yoga": "^1.16.7",
+    "jsonwebtoken": "^8.3.0",
+    "prisma": "^1.19.0",
+    "prisma-binding": "^2.1.6"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^1.18.4"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ],
+    "plugins": [
+      "transform-object-rest-spread"
+    ]
+  }
+}
