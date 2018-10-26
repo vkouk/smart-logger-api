@@ -19,6 +19,7 @@
     "url": "git+https://github.com/vkouk/smart-logger-api.git"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^6.1.0",
     "graphql": "^14.0.2",
     "graphql-cli": "^2.16.7",
@@ -28,18 +29,19 @@
     "prisma-binding": "^2.1.6"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/node": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
     "nodemon": "^1.18.4"
   },
   "babel": {
     "presets": [
-      "env"
+      "@babel/preset-env"
     ],
     "plugins": [
-      "transform-object-rest-spread"
+      "@babel/plugin-proposal-object-rest-spread"
     ]
   }
 }
