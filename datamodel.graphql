@@ -6,3 +6,9 @@ type User {
   resetToken: String
   resetTokenExpiry: Float
 }
+
+type Logs {
+  id: ID! @unique
+  name: String!
+  user: User!
+}
