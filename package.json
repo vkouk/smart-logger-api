@@ -9,6 +9,7 @@
     "deploy:dev": "prisma deploy --env-file src/config/dev.env",
     "deploy:prod": "prisma deploy --env-file src/config/prod.env",
     "get-schema": "graphql get-schema -p prisma",
+    "generate-schema": "prisma generate -e src/config/dev.env",
     "heroku-postbuild": "babel src -d dist && cp ./src/schema.graphql ./dist"
   },
   "author": "Vasilis Koukoutis",
