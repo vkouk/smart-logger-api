@@ -14,7 +14,6 @@ services:
             connector: postgres
             host: postgres-db
             port: 5432
-            schema: schema.graphql
             user: vkouk
             password: smartlogger
             migrations: true

@@ -4,9 +4,12 @@
   "description": "Activity Logger For Companies",
   "main": "server.js",
   "scripts": {
-    "start": "babel src -d dist && cp ./src/schema.graphql  ./dist && node dist/server.js",
-    "dev": "nodemon src/server.js --ext js,graphql --exec babel-node",
-    "deploy": "prisma deploy --env-file src/config/dev.env"
+    "start": "node dist/server.js",
+    "dev": "env-cmd src/config/dev.env nodemon src/server.js --ext js,graphql --exec babel-node",
+    "deploy:dev": "prisma deploy --env-file src/config/dev.env",
+    "deploy:prod": "prisma deploy --env-file src/config/prod.env",
+    "get-schema": "graphql get-schema -p prisma",
+    "heroku-postbuild": "babel src -d dist && cp ./src/schema.graphql ./dist"
   },
   "author": "Vasilis Koukoutis",
   "license": "MIT",
@@ -22,19 +25,21 @@
     "bcryptjs": "^2.4.3",
     "dotenv": "^6.1.0",
     "graphql": "^14.0.2",
-    "graphql-cli": "^2.16.7",
+    "graphql-cli": "^2.17.0",
     "graphql-yoga": "^1.16.7",
-    "jsonwebtoken": "^8.3.0",
-    "prisma": "^1.19.0",
-    "prisma-binding": "^2.1.6"
+    "jsonwebtoken": "^8.4.0",
+    "prisma": "^1.21.1",
+    "prisma-binding": "^2.2.8"
   },
   "devDependencies": {
-    "@babel/cli": "^7.0.0",
-    "@babel/core": "^7.0.0",
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
     "@babel/node": "^7.0.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "nodemon": "^1.18.4"
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.1.6",
+    "env-cmd": "^8.0.2",
+    "nodemon": "^1.18.7"
   },
   "babel": {
     "presets": [
