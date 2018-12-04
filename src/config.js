@@ -1,9 +1,9 @@
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 
-const env = process.env.NODE_ENV || 'dev';
+const env = process.env.NODE_ENV || "dev";
 
-if (env === 'dev' || env === 'test' || env === 'prod') {
-    dotenv.config({
-        path: `src/config/${env}.env`
-    })
-};
+if (env === "dev" || env === "test" || env === "prod") {
+  dotenv.config({
+    path: `src/config/${env}.env`
+  });
+}
