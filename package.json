@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node dist/server.js",
-    "dev": "env-cmd src/config/dev.env nodemon src/server.js --ext js,graphql --exec babel-node",
+    "dev": "nodemon src/server.js --ext js,graphql --exec babel-node",
     "deploy:dev": "prisma deploy --env-file src/config/dev.env",
     "deploy:prod": "prisma deploy --env-file src/config/prod.env",
     "get-schema": "graphql get-schema -p prisma",
@@ -15,7 +15,7 @@
   "author": "Vasilis Koukoutis",
   "license": "MIT",
   "engines": {
-    "node": "10.11.0",
+    "node": "11.3.0",
     "npm": "6.4.1"
   },
   "repository": {
@@ -39,7 +39,6 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.1.6",
-    "env-cmd": "^8.0.2",
     "nodemon": "^1.18.7"
   },
   "babel": {
