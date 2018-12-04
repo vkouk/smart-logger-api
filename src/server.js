@@ -1,4 +1,3 @@
-import "@babel/polyfill/noConflict";
 import { GraphQLServer } from "graphql-yoga";
 import "./config";
 import { resolvers } from "./resolvers";
