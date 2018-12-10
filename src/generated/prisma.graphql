@@ -10,10 +10,14 @@ type BatchPayload {
   count: Long!
 }
 
+scalar DateTime
+
 type Logs {
   id: ID!
   name: String!
   user: User!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type LogsConnection {
@@ -46,6 +50,8 @@ enum LogsOrderByInput {
 type LogsPreviousValues {
   id: ID!
   name: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type LogsSubscriptionPayload {
@@ -105,6 +111,22 @@ input LogsWhereInput {
   name_ends_with: String
   name_not_ends_with: String
   user: UserWhereInput
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
   AND: [LogsWhereInput!]
   OR: [LogsWhereInput!]
   NOT: [LogsWhereInput!]
@@ -168,6 +190,8 @@ type User {
   name: String!
   email: String!
   password: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type UserConnection {
@@ -212,6 +236,8 @@ type UserPreviousValues {
   name: String!
   email: String!
   password: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type UserSubscriptionPayload {
@@ -319,6 +345,22 @@ input UserWhereInput {
   password_not_starts_with: String
   password_ends_with: String
   password_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
   AND: [UserWhereInput!]
   OR: [UserWhereInput!]
   NOT: [UserWhereInput!]

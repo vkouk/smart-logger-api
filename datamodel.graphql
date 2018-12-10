@@ -3,10 +3,14 @@ type User {
   name: String!
   email: String! @unique
   password: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type Logs {
   id: ID! @unique
   name: String!
   user: User!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
