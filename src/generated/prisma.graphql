@@ -141,14 +141,28 @@ scalar Long
 type Mutation {
   createLogs(data: LogsCreateInput!): Logs!
   updateLogs(data: LogsUpdateInput!, where: LogsWhereUniqueInput!): Logs
-  updateManyLogses(data: LogsUpdateManyMutationInput!, where: LogsWhereInput): BatchPayload!
-  upsertLogs(where: LogsWhereUniqueInput!, create: LogsCreateInput!, update: LogsUpdateInput!): Logs!
+  updateManyLogses(
+    data: LogsUpdateManyMutationInput!
+    where: LogsWhereInput
+  ): BatchPayload!
+  upsertLogs(
+    where: LogsWhereUniqueInput!
+    create: LogsCreateInput!
+    update: LogsUpdateInput!
+  ): Logs!
   deleteLogs(where: LogsWhereUniqueInput!): Logs
   deleteManyLogses(where: LogsWhereInput): BatchPayload!
   createUser(data: UserCreateInput!): User!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
-  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
-  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  updateManyUsers(
+    data: UserUpdateManyMutationInput!
+    where: UserWhereInput
+  ): BatchPayload!
+  upsertUser(
+    where: UserWhereUniqueInput!
+    create: UserCreateInput!
+    update: UserUpdateInput!
+  ): User!
   deleteUser(where: UserWhereUniqueInput!): User
   deleteManyUsers(where: UserWhereInput): BatchPayload!
 }
@@ -172,11 +186,43 @@ type PageInfo {
 
 type Query {
   logs(where: LogsWhereUniqueInput!): Logs
-  logses(where: LogsWhereInput, orderBy: LogsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Logs]!
-  logsesConnection(where: LogsWhereInput, orderBy: LogsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): LogsConnection!
+  logses(
+    where: LogsWhereInput
+    orderBy: LogsOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [Logs]!
+  logsesConnection(
+    where: LogsWhereInput
+    orderBy: LogsOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): LogsConnection!
   user(where: UserWhereUniqueInput!): User
-  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
-  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  users(
+    where: UserWhereInput
+    orderBy: UserOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [User]!
+  usersConnection(
+    where: UserWhereInput
+    orderBy: UserOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): UserConnection!
   node(id: ID!): Node
 }
 

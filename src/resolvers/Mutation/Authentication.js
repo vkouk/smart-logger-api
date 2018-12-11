@@ -15,12 +15,13 @@ export const Authentication = {
       },
       info
     );
-    //Create User token
-    user.token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
-      expiresIn: "1d"
-    });
 
-    return user;
+    return {
+      user,
+      token: jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
+        expiresIn: "1d"
+      })
+    };
   },
   async signin(parent, { email, password }, ctx, info) {
     //Check if there is a user with that email
@@ -33,11 +34,12 @@ export const Authentication = {
     if (!valid) {
       throw new Error("Invalid Password!");
     }
-    //Generate the JWT Token
-    user.token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
-      expiresIn: "1d"
-    });
 
-    return user;
+    return {
+      user,
+      token: jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
+        expiresIn: "1d"
+      })
+    };
   }
 };
