@@ -16,11 +16,8 @@ export const Authentication = {
       info
     );
     //Create User token
-    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET);
-    //Set cookie duration
-    ctx.response.cookie("token", token, {
-      httpOnly: true,
-      maxAge: 1000 * 60 * 60 * 24 * 365 // 1 year cookie
+    user.token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
+      expiresIn: "1d"
     });
 
     return user;
@@ -37,17 +34,10 @@ export const Authentication = {
       throw new Error("Invalid Password!");
     }
     //Generate the JWT Token
-    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET);
-    //Set the cookie with the token
-    ctx.response.cookie("token", token, {
-      httpOnly: true,
-      maxAge: 1000 * 60 * 60 * 24 * 365
+    user.token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
+      expiresIn: "1d"
     });
 
     return user;
-  },
-  signout(parent, args, ctx, info) {
-    ctx.response.clearCookie("token");
-    return { message: "Adios!!" };
   }
 };

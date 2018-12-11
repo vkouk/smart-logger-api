@@ -1,20 +1,17 @@
+import getUser from "../utils/getUser";
+
 export const Query = {
   me(obj, args, ctx, info) {
-    if (!ctx.request.userId) {
-      return null;
-    }
+    const userId = getUser(ctx);
+
     return ctx.db.query.user(
       {
-        where: { id: ctx.request.userId }
+        where: { id: userId }
       },
       info
     );
   },
   async users(obj, args, ctx, info) {
-    // if (!ctx.request.userId) {
-    //   throw new Error("You must be logged in!");
-    // }
-
     return ctx.db.query.users({}, info);
   }
 };
