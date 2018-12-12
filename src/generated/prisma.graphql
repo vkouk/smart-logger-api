@@ -1,4 +1,4 @@
-type AggregateLogs {
+type AggregateLog {
   count: Int!
 }
 
@@ -12,76 +12,76 @@ type BatchPayload {
 
 scalar DateTime
 
-type Logs {
+type Log {
   id: ID!
-  name: String!
+  log: String!
   user: User!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
 
-type LogsConnection {
+type LogConnection {
   pageInfo: PageInfo!
-  edges: [LogsEdge]!
-  aggregate: AggregateLogs!
+  edges: [LogEdge]!
+  aggregate: AggregateLog!
 }
 
-input LogsCreateInput {
-  name: String!
+input LogCreateInput {
+  log: String!
   user: UserCreateOneInput!
 }
 
-type LogsEdge {
-  node: Logs!
+type LogEdge {
+  node: Log!
   cursor: String!
 }
 
-enum LogsOrderByInput {
+enum LogOrderByInput {
   id_ASC
   id_DESC
-  name_ASC
-  name_DESC
+  log_ASC
+  log_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
   updatedAt_DESC
 }
 
-type LogsPreviousValues {
+type LogPreviousValues {
   id: ID!
-  name: String!
+  log: String!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
 
-type LogsSubscriptionPayload {
+type LogSubscriptionPayload {
   mutation: MutationType!
-  node: Logs
+  node: Log
   updatedFields: [String!]
-  previousValues: LogsPreviousValues
+  previousValues: LogPreviousValues
 }
 
-input LogsSubscriptionWhereInput {
+input LogSubscriptionWhereInput {
   mutation_in: [MutationType!]
   updatedFields_contains: String
   updatedFields_contains_every: [String!]
   updatedFields_contains_some: [String!]
-  node: LogsWhereInput
-  AND: [LogsSubscriptionWhereInput!]
-  OR: [LogsSubscriptionWhereInput!]
-  NOT: [LogsSubscriptionWhereInput!]
+  node: LogWhereInput
+  AND: [LogSubscriptionWhereInput!]
+  OR: [LogSubscriptionWhereInput!]
+  NOT: [LogSubscriptionWhereInput!]
 }
 
-input LogsUpdateInput {
-  name: String
+input LogUpdateInput {
+  log: String
   user: UserUpdateOneRequiredInput
 }
 
-input LogsUpdateManyMutationInput {
-  name: String
+input LogUpdateManyMutationInput {
+  log: String
 }
 
-input LogsWhereInput {
+input LogWhereInput {
   id: ID
   id_not: ID
   id_in: [ID!]
@@ -96,20 +96,20 @@ input LogsWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  name: String
-  name_not: String
-  name_in: [String!]
-  name_not_in: [String!]
-  name_lt: String
-  name_lte: String
-  name_gt: String
-  name_gte: String
-  name_contains: String
-  name_not_contains: String
-  name_starts_with: String
-  name_not_starts_with: String
-  name_ends_with: String
-  name_not_ends_with: String
+  log: String
+  log_not: String
+  log_in: [String!]
+  log_not_in: [String!]
+  log_lt: String
+  log_lte: String
+  log_gt: String
+  log_gte: String
+  log_contains: String
+  log_not_contains: String
+  log_starts_with: String
+  log_not_starts_with: String
+  log_ends_with: String
+  log_not_ends_with: String
   user: UserWhereInput
   createdAt: DateTime
   createdAt_not: DateTime
@@ -127,42 +127,28 @@ input LogsWhereInput {
   updatedAt_lte: DateTime
   updatedAt_gt: DateTime
   updatedAt_gte: DateTime
-  AND: [LogsWhereInput!]
-  OR: [LogsWhereInput!]
-  NOT: [LogsWhereInput!]
+  AND: [LogWhereInput!]
+  OR: [LogWhereInput!]
+  NOT: [LogWhereInput!]
 }
 
-input LogsWhereUniqueInput {
+input LogWhereUniqueInput {
   id: ID
 }
 
 scalar Long
 
 type Mutation {
-  createLogs(data: LogsCreateInput!): Logs!
-  updateLogs(data: LogsUpdateInput!, where: LogsWhereUniqueInput!): Logs
-  updateManyLogses(
-    data: LogsUpdateManyMutationInput!
-    where: LogsWhereInput
-  ): BatchPayload!
-  upsertLogs(
-    where: LogsWhereUniqueInput!
-    create: LogsCreateInput!
-    update: LogsUpdateInput!
-  ): Logs!
-  deleteLogs(where: LogsWhereUniqueInput!): Logs
-  deleteManyLogses(where: LogsWhereInput): BatchPayload!
+  createLog(data: LogCreateInput!): Log!
+  updateLog(data: LogUpdateInput!, where: LogWhereUniqueInput!): Log
+  updateManyLogs(data: LogUpdateManyMutationInput!, where: LogWhereInput): BatchPayload!
+  upsertLog(where: LogWhereUniqueInput!, create: LogCreateInput!, update: LogUpdateInput!): Log!
+  deleteLog(where: LogWhereUniqueInput!): Log
+  deleteManyLogs(where: LogWhereInput): BatchPayload!
   createUser(data: UserCreateInput!): User!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
-  updateManyUsers(
-    data: UserUpdateManyMutationInput!
-    where: UserWhereInput
-  ): BatchPayload!
-  upsertUser(
-    where: UserWhereUniqueInput!
-    create: UserCreateInput!
-    update: UserUpdateInput!
-  ): User!
+  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
   deleteUser(where: UserWhereUniqueInput!): User
   deleteManyUsers(where: UserWhereInput): BatchPayload!
 }
@@ -185,49 +171,17 @@ type PageInfo {
 }
 
 type Query {
-  logs(where: LogsWhereUniqueInput!): Logs
-  logses(
-    where: LogsWhereInput
-    orderBy: LogsOrderByInput
-    skip: Int
-    after: String
-    before: String
-    first: Int
-    last: Int
-  ): [Logs]!
-  logsesConnection(
-    where: LogsWhereInput
-    orderBy: LogsOrderByInput
-    skip: Int
-    after: String
-    before: String
-    first: Int
-    last: Int
-  ): LogsConnection!
+  log(where: LogWhereUniqueInput!): Log
+  logs(where: LogWhereInput, orderBy: LogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Log]!
+  logsConnection(where: LogWhereInput, orderBy: LogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): LogConnection!
   user(where: UserWhereUniqueInput!): User
-  users(
-    where: UserWhereInput
-    orderBy: UserOrderByInput
-    skip: Int
-    after: String
-    before: String
-    first: Int
-    last: Int
-  ): [User]!
-  usersConnection(
-    where: UserWhereInput
-    orderBy: UserOrderByInput
-    skip: Int
-    after: String
-    before: String
-    first: Int
-    last: Int
-  ): UserConnection!
+  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
   node(id: ID!): Node
 }
 
 type Subscription {
-  logs(where: LogsSubscriptionWhereInput): LogsSubscriptionPayload
+  log(where: LogSubscriptionWhereInput): LogSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
 }
 

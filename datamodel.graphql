@@ -7,9 +7,9 @@ type User {
   updatedAt: DateTime!
 }
 
-type Logs {
+type Log {
   id: ID! @unique
-  name: String!
+  log: String!
   user: User!
   createdAt: DateTime!
   updatedAt: DateTime!

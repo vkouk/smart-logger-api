@@ -1,11 +1,11 @@
 import { Query } from "./Query";
 import { Authentication } from "./Mutation/Authentication";
-import { Logs } from "./Mutation/Logs";
+import { Log } from "./Mutation/Log";
 
 export const resolvers = {
   Query,
   Mutation: {
     ...Authentication,
-    ...Logs
+    ...Log
   }
 };
