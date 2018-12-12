@@ -6,15 +6,12 @@ export const Authentication = {
     //Hash Password
     const password = await bcrypt.hash(args.password, 10);
     // Create User
-    const user = await ctx.db.mutation.createUser(
-      {
-        data: {
-          ...args,
-          password
-        }
-      },
-      info
-    );
+    const user = await ctx.db.mutation.createUser({
+      data: {
+        ...args,
+        password
+      }
+    });
 
     return {
       user,
