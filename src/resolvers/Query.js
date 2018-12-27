@@ -11,7 +11,7 @@ export const Query = {
       info
     );
   },
-  async users(obj, args, ctx, info) {
+  users(obj, args, ctx, info) {
     return ctx.db.query.users({}, info);
   }
 };

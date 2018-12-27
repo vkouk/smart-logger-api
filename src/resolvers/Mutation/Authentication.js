@@ -3,6 +3,10 @@ import jwt from "jsonwebtoken";
 
 export const Authentication = {
   async signup(parent, args, ctx, info) {
+    if (!args.email || !args.name || !args.password) {
+      throw Error("Please fill all fields.");
+    }
+
     //Hash Password
     const password = await bcrypt.hash(args.password, 10);
     // Create User
@@ -21,6 +25,10 @@ export const Authentication = {
     };
   },
   async signin(parent, { email, password }, ctx, info) {
+    if (!email || !password) {
+      throw Error("Please fill all fields.");
+    }
+
     //Check if there is a user with that email
     const user = await ctx.db.query.user({ where: { email } });
     if (!user) {
