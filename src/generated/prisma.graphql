@@ -236,6 +236,7 @@ type User {
   name: String!
   email: String!
   password: String!
+  avatar: String
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -250,6 +251,7 @@ input UserCreateInput {
   name: String!
   email: String!
   password: String!
+  avatar: String
 }
 
 input UserCreateOneInput {
@@ -271,6 +273,8 @@ enum UserOrderByInput {
   email_DESC
   password_ASC
   password_DESC
+  avatar_ASC
+  avatar_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -282,6 +286,7 @@ type UserPreviousValues {
   name: String!
   email: String!
   password: String!
+  avatar: String
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -308,18 +313,21 @@ input UserUpdateDataInput {
   name: String
   email: String
   password: String
+  avatar: String
 }
 
 input UserUpdateInput {
   name: String
   email: String
   password: String
+  avatar: String
 }
 
 input UserUpdateManyMutationInput {
   name: String
   email: String
   password: String
+  avatar: String
 }
 
 input UserUpdateOneRequiredInput {
@@ -391,6 +399,20 @@ input UserWhereInput {
   password_not_starts_with: String
   password_ends_with: String
   password_not_ends_with: String
+  avatar: String
+  avatar_not: String
+  avatar_in: [String!]
+  avatar_not_in: [String!]
+  avatar_lt: String
+  avatar_lte: String
+  avatar_gt: String
+  avatar_gte: String
+  avatar_contains: String
+  avatar_not_contains: String
+  avatar_starts_with: String
+  avatar_not_starts_with: String
+  avatar_ends_with: String
+  avatar_not_ends_with: String
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]

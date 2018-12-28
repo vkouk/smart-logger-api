@@ -1,5 +1,6 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import getUser from "../../utils/getUser";
 
 export const Authentication = {
   async signup(parent, args, ctx, info) {
@@ -46,5 +47,22 @@ export const Authentication = {
         expiresIn: "1d"
       })
     };
+  },
+  async updateUser(parent, { email, name, avatar }, ctx, info) {
+    const userId = getUser(ctx);
+
+    if (!userId) {
+      throw Error("Please signin first");
+    }
+
+    const user = await ctx.db.mutation.updateUser(
+      {
+        where: { id: userId },
+        data: { email, name, avatar }
+      },
+      info
+    );
+
+    return user;
   }
 };
