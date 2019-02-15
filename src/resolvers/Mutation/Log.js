@@ -1,7 +1,7 @@
 import getUser from "../../utils/getUser";
 
 export const Log = {
-  async createLog(parent, { log }, ctx, info) {
+  async createLog(parent, { log, logTime }, ctx, info) {
     const userId = getUser(ctx);
 
     if (!userId) {
@@ -10,6 +10,7 @@ export const Log = {
 
     const data = {
       log,
+      logTime,
       user: {
         connect: { id: userId }
       }

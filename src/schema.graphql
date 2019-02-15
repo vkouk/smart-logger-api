@@ -14,7 +14,7 @@ type Mutation {
   ): AuthPayload!
   signin(email: String!, password: String!): AuthPayload!
   updateUser(email: String, name: String, avatar: String): User!
-  createLog(log: String!): Log!
+  createLog(log: String!, logTime: Int!): Log!
 }
 
 type User {

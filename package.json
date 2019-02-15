@@ -15,8 +15,8 @@
   "author": "Vasilis Koukoutis",
   "license": "MIT",
   "engines": {
-    "node": "11.3.0",
-    "npm": "6.4.1"
+    "node": "11.9.0",
+    "npm": "6.5.0"
   },
   "repository": {
     "type": "git",
@@ -25,21 +25,21 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "dotenv": "^6.2.0",
-    "graphql": "^14.0.2",
+    "graphql": "^14.1.1",
     "graphql-cli": "^2.17.0",
-    "graphql-yoga": "^1.16.7",
+    "graphql-yoga": "^1.17.4",
     "jsonwebtoken": "^8.4.0",
-    "prisma": "^1.22.2",
-    "prisma-binding": "^2.2.9"
+    "prisma": "^1.26.6",
+    "prisma-binding": "^2.3.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.2.0",
-    "@babel/core": "^7.2.0",
-    "@babel/node": "^7.2.0",
-    "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
-    "@babel/preset-env": "^7.2.0",
-    "@babel/polyfill": "^7.0.0",
-    "nodemon": "^1.18.7"
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/plugin-proposal-object-rest-spread": "^7.3.2",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/preset-env": "^7.3.1",
+    "nodemon": "^1.18.10"
   },
   "babel": {
     "presets": [
