@@ -11,6 +11,7 @@ type User {
 type Log {
   id: ID! @unique
   log: String!
+  logTime: Int!
   user: User!
   createdAt: DateTime!
   updatedAt: DateTime!
