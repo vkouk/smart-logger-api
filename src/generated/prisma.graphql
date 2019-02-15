@@ -15,6 +15,7 @@ scalar DateTime
 type Log {
   id: ID!
   log: String!
+  logTime: Int!
   user: User!
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -28,6 +29,7 @@ type LogConnection {
 
 input LogCreateInput {
   log: String!
+  logTime: Int!
   user: UserCreateOneInput!
 }
 
@@ -41,6 +43,8 @@ enum LogOrderByInput {
   id_DESC
   log_ASC
   log_DESC
+  logTime_ASC
+  logTime_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -50,6 +54,7 @@ enum LogOrderByInput {
 type LogPreviousValues {
   id: ID!
   log: String!
+  logTime: Int!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -74,11 +79,13 @@ input LogSubscriptionWhereInput {
 
 input LogUpdateInput {
   log: String
+  logTime: Int
   user: UserUpdateOneRequiredInput
 }
 
 input LogUpdateManyMutationInput {
   log: String
+  logTime: Int
 }
 
 input LogWhereInput {
@@ -110,6 +117,14 @@ input LogWhereInput {
   log_not_starts_with: String
   log_ends_with: String
   log_not_ends_with: String
+  logTime: Int
+  logTime_not: Int
+  logTime_in: [Int!]
+  logTime_not_in: [Int!]
+  logTime_lt: Int
+  logTime_lte: Int
+  logTime_gt: Int
+  logTime_gte: Int
   user: UserWhereInput
   createdAt: DateTime
   createdAt_not: DateTime
@@ -141,28 +156,14 @@ scalar Long
 type Mutation {
   createLog(data: LogCreateInput!): Log!
   updateLog(data: LogUpdateInput!, where: LogWhereUniqueInput!): Log
-  updateManyLogs(
-    data: LogUpdateManyMutationInput!
-    where: LogWhereInput
-  ): BatchPayload!
-  upsertLog(
-    where: LogWhereUniqueInput!
-    create: LogCreateInput!
-    update: LogUpdateInput!
-  ): Log!
+  updateManyLogs(data: LogUpdateManyMutationInput!, where: LogWhereInput): BatchPayload!
+  upsertLog(where: LogWhereUniqueInput!, create: LogCreateInput!, update: LogUpdateInput!): Log!
   deleteLog(where: LogWhereUniqueInput!): Log
   deleteManyLogs(where: LogWhereInput): BatchPayload!
   createUser(data: UserCreateInput!): User!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
-  updateManyUsers(
-    data: UserUpdateManyMutationInput!
-    where: UserWhereInput
-  ): BatchPayload!
-  upsertUser(
-    where: UserWhereUniqueInput!
-    create: UserCreateInput!
-    update: UserUpdateInput!
-  ): User!
+  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
   deleteUser(where: UserWhereUniqueInput!): User
   deleteManyUsers(where: UserWhereInput): BatchPayload!
 }
@@ -186,43 +187,11 @@ type PageInfo {
 
 type Query {
   log(where: LogWhereUniqueInput!): Log
-  logs(
-    where: LogWhereInput
-    orderBy: LogOrderByInput
-    skip: Int
-    after: String
-    before: String
-    first: Int
-    last: Int
-  ): [Log]!
-  logsConnection(
-    where: LogWhereInput
-    orderBy: LogOrderByInput
-    skip: Int
-    after: String
-    before: String
-    first: Int
-    last: Int
-  ): LogConnection!
+  logs(where: LogWhereInput, orderBy: LogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Log]!
+  logsConnection(where: LogWhereInput, orderBy: LogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): LogConnection!
   user(where: UserWhereUniqueInput!): User
-  users(
-    where: UserWhereInput
-    orderBy: UserOrderByInput
-    skip: Int
-    after: String
-    before: String
-    first: Int
-    last: Int
-  ): [User]!
-  usersConnection(
-    where: UserWhereInput
-    orderBy: UserOrderByInput
-    skip: Int
-    after: String
-    before: String
-    first: Int
-    last: Int
-  ): UserConnection!
+  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
   node(id: ID!): Node
 }
 
