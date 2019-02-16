@@ -20,7 +20,9 @@ export const Query = {
     return ctx.db.query.logs(
       {
         where: {
-          id: userId
+          user: {
+            id: userId
+          }
         }
       },
       info
