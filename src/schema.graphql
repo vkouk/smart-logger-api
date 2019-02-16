@@ -3,6 +3,8 @@
 type Query {
   me: User
   users: [User]!
+  logs: [Log]!
+  log: Log!
 }
 
 type Mutation {
@@ -15,6 +17,7 @@ type Mutation {
   signin(email: String!, password: String!): AuthPayload!
   updateUser(email: String, name: String, avatar: String): User!
   createLog(log: String!, logTime: Int!): Log!
+  deleteLog(id: ID!): Log!
 }
 
 type User {

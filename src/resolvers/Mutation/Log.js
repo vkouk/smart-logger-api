@@ -17,5 +17,21 @@ export const Log = {
     };
 
     return ctx.db.mutation.createLog({ data }, info);
+  },
+  async deleteLog(parent, { id }, ctx, info) {
+    const userId = getUser(ctx);
+
+    if (!userId) {
+      throw Error("Please signin first");
+    }
+
+    return ctx.db.mutation.deleteLog(
+      {
+        where: {
+          id
+        }
+      },
+      info
+    );
   }
 };
