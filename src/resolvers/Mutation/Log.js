@@ -1,7 +1,7 @@
 import getUser from "../../utils/getUser";
 
 export const Log = {
-  async createLog(parent, { log, logTime }, ctx, info) {
+  createLog(parent, { log, logTime }, ctx, info) {
     const userId = getUser(ctx);
 
     if (!userId) {
@@ -20,9 +20,14 @@ export const Log = {
   },
   async deleteLog(parent, { id }, ctx, info) {
     const userId = getUser(ctx);
+    const log = await ctx.db.query.log(
+      { where: { id } },
+      `{ id log logTime user { id }}`
+    );
+    const ownsLog = log.user.id === userId;
 
-    if (!userId) {
-      throw Error("Please signin first");
+    if (!userId && !ownsLog) {
+      throw Error("You can't delete this log");
     }
 
     return ctx.db.mutation.deleteLog(
